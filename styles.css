@@ -1,0 +1,876 @@
+/* =========================================================================
+   Motion Hookah Club – Digitale Speisekarte
+   Design-Tokens zuerst anpassen, um Look überall zentral zu ändern.
+   ========================================================================= */
+
+/* Schriften lokal eingebunden statt von Google-Servern nachgeladen — vermeidet
+   die Übertragung der Besucher-IP an Google beim Seitenaufruf (DSGVO-Thema,
+   siehe LG München I, Urteil v. 20.01.2022, Az. 3 O 17493/20). Variable
+   Fonts: eine Datei deckt mehrere Schnitte ab (font-weight-Bereich). */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/inter-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("../fonts/jost-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("../fonts/jost-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  /* Farb-Tokens ("Midnight Gold") */
+  --color-bg: #0b0b0d;
+  --color-surface: #16161a;
+  --color-surface-2: #1d1d22;
+  --color-gold: #c9a24b;
+  --color-gold-light: #e4c673;
+  --color-text: #f5f1e8;
+  --color-text-muted: #a8a29a;
+  --color-border: rgba(201, 162, 75, 0.18);
+  --color-border-strong: rgba(201, 162, 75, 0.4);
+  --color-overlay: rgba(6, 6, 7, 0.86);
+
+  /* Typografie-Tokens */
+  --font-display: "Jost", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  /* Layout-Tokens */
+  --page-max-width: 720px;
+  --radius-s: 8px;
+  --cut: 16px; /* Diagonaler Eckenschnitt — nimmt die Schnittkanten des Logos auf */
+  --header-logo-height: 44px;
+  --search-height: 56px;
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45);
+
+  /* Neon-Glow-Tokens ("Gold Neon Glow") — mehrschichtig: scharfer Kern +
+     weicher äußerer Schein, wie eine goldene Leuchtschrift. Zentral hier
+     anpassen, um die Leucht-Intensität überall gleichzeitig zu justieren. */
+  --glow-gold-xs: 0 0 4px rgba(201, 162, 75, 0.28);
+  --glow-gold-sm: 0 0 6px rgba(201, 162, 75, 0.45), 0 0 16px rgba(201, 162, 75, 0.2);
+  --glow-gold-md: 0 0 8px rgba(201, 162, 75, 0.55), 0 0 22px rgba(201, 162, 75, 0.3);
+  --glow-gold-lg: 0 0 12px rgba(201, 162, 75, 0.65), 0 0 32px rgba(201, 162, 75, 0.4),
+    0 0 60px rgba(201, 162, 75, 0.18);
+
+  /* Gleiche Leucht-Werte als drop-shadow-Filter — nötig für Elemente mit
+     clip-path (Kachel, Button, Dialog): box-shadow ignoriert die geschnittene
+     Form, filter:drop-shadow folgt ihr exakt. */
+  --dropglow-card: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 4px rgba(201, 162, 75, 0.22));
+  --dropglow-card-hover: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 9px rgba(201, 162, 75, 0.45));
+  --dropglow-btn: drop-shadow(0 0 8px rgba(201, 162, 75, 0.5)) drop-shadow(0 0 20px rgba(201, 162, 75, 0.28));
+  --dropglow-btn-active: drop-shadow(0 0 14px rgba(201, 162, 75, 0.7)) drop-shadow(0 0 30px rgba(201, 162, 75, 0.4));
+  --dropglow-dialog: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 10px rgba(201, 162, 75, 0.3));
+}
+
+/* ---------------------------------------------------------------------
+   Reset / Basis
+   --------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  /* Bewusst flaches Schwarz statt eines radialen "Hero-Glow"-Verlaufs —
+     der ist mittlerweile das Erkennungszeichen generischer KI-Demo-Seiten. */
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3, p, ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-gold);
+  color: #14120a;
+  padding: 10px 16px;
+  border-radius: var(--radius-s);
+  z-index: 200;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 2px;
+  box-shadow: var(--glow-gold-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Header
+   --------------------------------------------------------------------- */
+.site-header {
+  padding-top: max(28px, calc(env(safe-area-inset-top) + 16px));
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+  padding-bottom: 18px;
+  text-align: center;
+  background: var(--color-bg);
+}
+
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  height: 52px;
+  width: auto;
+  /* drop-shadow statt box-shadow: folgt der transparenten Logo-Form exakt
+     (Schriftzug leuchtet, nicht ein Kasten drumherum) */
+  filter: drop-shadow(0 0 6px rgba(201, 162, 75, 0.45)) drop-shadow(0 0 18px rgba(201, 162, 75, 0.28));
+  animation: logo-glow-pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes logo-glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(201, 162, 75, 0.4)) drop-shadow(0 0 16px rgba(201, 162, 75, 0.24));
+  }
+  50% {
+    filter: drop-shadow(0 0 9px rgba(201, 162, 75, 0.6)) drop-shadow(0 0 26px rgba(201, 162, 75, 0.38));
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Suche
+   --------------------------------------------------------------------- */
+.search-bar-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--color-bg);
+  padding-top: max(12px, env(safe-area-inset-top));
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.search-bar {
+  position: relative;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.search-input {
+  /* -webkit-appearance/appearance: Safari gibt type="search"-Feldern sonst
+     ihr eigenes natives Aussehen (u.a. weißer Hintergrund) und ignoriert
+     dabei unsere background/border-Regeln. */
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: var(--search-height);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-text);
+  padding: 0 16px 0 42px;
+  font-family: var(--font-body);
+  font-size: 16px; /* verhindert Zoom auf iOS bei Fokus */
+}
+
+.search-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.search-input:focus {
+  border-color: var(--color-gold);
+  box-shadow: var(--glow-gold-md);
+  outline: none;
+}
+
+/* Natives Lösch-Icon (Chrome/Safari) an unser Gold-Theme anpassen statt
+   im Systemblau/-grau stehen zu lassen. */
+.search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  cursor: pointer;
+  background: var(--color-text-muted);
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" fill="none" stroke="black" stroke-width="3" stroke-linecap="round"/></svg>') center / contain no-repeat;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" fill="none" stroke="black" stroke-width="3" stroke-linecap="round"/></svg>') center / contain no-repeat;
+}
+
+/* ---------------------------------------------------------------------
+   Topbar (Zurück-Pfeil + Titel) – nur in Kategorie-/Suchansicht sichtbar
+   --------------------------------------------------------------------- */
+.view-topbar {
+  position: sticky;
+  top: var(--search-height);
+  z-index: 29;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.view-topbar[hidden] {
+  display: none;
+}
+
+.view-topbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+}
+
+.back-btn {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--glow-gold-xs);
+  transition: box-shadow 0.15s ease;
+}
+
+.back-btn:active {
+  box-shadow: var(--glow-gold-sm);
+}
+
+.back-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.view-topbar-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 0.01em;
+  color: var(--color-gold-light);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------------
+   Kachel-Übersicht (Startbildschirm)
+   --------------------------------------------------------------------- */
+.category-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 600px) {
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .category-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.category-tile {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  text-decoration: none;
+  /* Diagonaler Eckenschnitt statt Rundung — nimmt die Schnittkanten des
+     Logos auf, eigene Formensprache statt Standard-App-Karten. */
+  clip-path: polygon(
+    var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut)
+  );
+  filter: var(--dropglow-card);
+  transition: filter 0.15s ease, border-color 0.15s ease;
+}
+
+.category-tile:active {
+  border-color: var(--color-gold);
+  filter: var(--dropglow-card-hover);
+}
+
+@media (hover: hover) {
+  .category-tile:hover {
+    border-color: var(--color-gold);
+    filter: var(--dropglow-card-hover);
+  }
+}
+
+.category-tile-photo {
+  width: 100%;
+  height: 100%;
+}
+
+.category-tile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Einheitliche warme Tonung — macht aus Fotos unterschiedlicher Quellen
+     optisch ein zusammenhängendes Shooting statt "gemischte Stockfotos". */
+  filter: sepia(0.32) saturate(1.2) hue-rotate(-6deg) brightness(0.9) contrast(1.08);
+}
+
+.category-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgba(6, 6, 7, 0.92) 100%);
+}
+
+.category-tile-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 10px 14px 12px;
+}
+
+.category-tile-name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 14.5px;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+.category-tile-count {
+  display: block;
+  font-size: 11px;
+  color: var(--color-gold-light);
+  margin-top: 2px;
+}
+
+/* ---------------------------------------------------------------------
+   Hauptbereich
+   --------------------------------------------------------------------- */
+#menu-main {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+  padding-bottom: 40px;
+}
+
+@media (min-width: 1000px) {
+  #menu-main {
+    --page-max-width: 980px;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Speisekarten-Liste — klassische Menü-Typografie (Name ··· Preis) statt
+   App-Karten-Raster. Auf breiten Screens zweispaltig wie eine gedruckte,
+   gefaltete Karte (CSS-Mehrspaltensatz, kein Grid mit Lücken).
+   --------------------------------------------------------------------- */
+.menu-list {
+  display: block;
+}
+
+@media (min-width: 1000px) {
+  .menu-list {
+    columns: 2;
+    column-gap: 48px;
+  }
+}
+
+.menu-row {
+  display: flex;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+  break-inside: avoid;
+}
+
+.menu-row:last-child {
+  border-bottom: none;
+}
+
+@media (hover: hover) {
+  .menu-row:hover {
+    background: linear-gradient(90deg, rgba(201, 162, 75, 0.06), transparent 65%);
+  }
+}
+
+.menu-row[hidden] {
+  display: none;
+}
+
+.menu-row-photo {
+  /* Etwas hochformatiger als quadratisch (68x88 statt 68x68) — passt besser
+     zu den meist hochkanten Getränkefotos, damit bei object-fit:contain
+     nicht unnötig viel Leerraum links/rechts entsteht. */
+  flex: 0 0 68px;
+  width: 68px;
+  height: 88px;
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  background: var(--color-surface-2);
+}
+
+.menu-row-photo img {
+  width: 100%;
+  height: 100%;
+  /* contain statt cover: das Getränk muss IMMER komplett sichtbar sein,
+     nie oben/unten abgeschnitten — wichtiger als die Box randlos zu füllen. */
+  object-fit: contain;
+  filter: sepia(0.32) saturate(1.2) hue-rotate(-6deg) brightness(0.94) contrast(1.06);
+}
+
+.menu-row-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+}
+
+.menu-row-category-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.menu-row-line {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+}
+
+.menu-row-name {
+  flex: 0 1 auto;
+  min-width: 0;
+  /* Manche Namen enthalten lange, leerzeichenlose Klammerzusätze
+     ("(Pfirsich/Blaubeere/…)") — ohne das hier würde so ein
+     unteilbares "Wort" die Box aufsprengen und den Preis aus dem
+     sichtbaren Bereich schieben. */
+  overflow-wrap: anywhere;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15.5px;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+.menu-row-dots {
+  flex: 1 1 auto;
+  min-width: 14px;
+  margin-bottom: 4px;
+  border-bottom: 2px dotted var(--color-border-strong);
+}
+
+.menu-row-price {
+  flex: 0 0 auto;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--color-gold-light);
+  text-shadow: 0 0 8px rgba(201, 162, 75, 0.45);
+  white-space: nowrap;
+}
+
+.menu-row-desc {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.menu-row-tags {
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+}
+
+.menu-row-flavors {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3px 14px;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.menu-row-flavors[hidden] {
+  display: none;
+}
+
+@media (min-width: 420px) {
+  .menu-row-flavors {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.menu-row-flavors li {
+  position: relative;
+  padding-left: 12px;
+}
+
+.menu-row-flavors li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-gold);
+}
+
+.menu-row-toggle {
+  align-self: flex-start;
+  margin-top: 2px;
+  background: none;
+  border: none;
+  color: var(--color-gold);
+  font-size: 12.5px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 0;
+}
+
+.no-results {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: 40px 16px;
+  font-size: 15px;
+}
+
+/* ---------------------------------------------------------------------
+   Allergie-Hinweis (Startup-Overlay)
+   --------------------------------------------------------------------- */
+.allergy-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: var(--color-overlay);
+  padding-top: max(16px, env(safe-area-inset-top));
+  padding-right: max(16px, env(safe-area-inset-right));
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+  padding-left: max(16px, env(safe-area-inset-left));
+}
+
+.allergy-overlay[hidden] {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .allergy-overlay {
+    align-items: center;
+  }
+}
+
+.allergy-box {
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(160deg, var(--color-surface), var(--color-surface-2));
+  border: 1px solid var(--color-border-strong);
+  padding: 24px 22px;
+  clip-path: polygon(
+    var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut)
+  );
+  filter: var(--dropglow-dialog);
+}
+
+.allergy-text {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--color-text);
+  margin-bottom: 18px;
+}
+
+.btn-gold {
+  display: block;
+  width: 100%;
+  height: 48px;
+  border: none;
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+  color: #14120a;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  filter: var(--dropglow-btn);
+  transition: filter 0.15s ease;
+}
+
+.btn-gold:active {
+  filter: var(--dropglow-btn-active);
+}
+
+/* ---------------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding-top: 32px;
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+  padding-bottom: calc(90px + env(safe-area-inset-bottom));
+  text-align: center;
+}
+
+.footer-logo {
+  height: 28px;
+  width: auto;
+  margin: 0 auto 14px;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 5px rgba(201, 162, 75, 0.35));
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  color: var(--color-text-muted);
+  font-size: 13.5px;
+  margin-bottom: 14px;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.footer-copy {
+  color: var(--color-text-muted);
+  font-size: 12.5px;
+}
+
+/* ---------------------------------------------------------------------
+   Zurück nach oben
+   --------------------------------------------------------------------- */
+.back-to-top {
+  position: fixed;
+  right: calc(16px + env(safe-area-inset-right));
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-card), var(--glow-gold-sm);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.15s ease;
+  z-index: 40;
+}
+
+.back-to-top:active {
+  box-shadow: var(--shadow-card), var(--glow-gold-md);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ---------------------------------------------------------------------
+   Rechtstexte (Impressum, Datenschutz)
+   --------------------------------------------------------------------- */
+.legal-page {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding-top: 28px;
+  padding-bottom: 60px;
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+}
+
+.legal-page h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 26px;
+  letter-spacing: 0.01em;
+  color: var(--color-gold-light);
+  margin-bottom: 22px;
+}
+
+.legal-page h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 0.01em;
+  color: var(--color-gold-light);
+  margin: 30px 0 10px;
+}
+
+.legal-page p,
+.legal-page li {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+.legal-page p {
+  margin-bottom: 12px;
+}
+
+.legal-page ul {
+  margin-bottom: 12px;
+}
+
+.legal-page li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 6px;
+}
+
+.legal-page li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-gold);
+}
+
+.legal-page a {
+  color: var(--color-gold-light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-page strong {
+  color: var(--color-text);
+}
+
+/* Sehr auffällig markierte Platzhalter, die vor dem Live-Gang noch mit
+   echten Angaben ersetzt werden müssen — sollen nicht mit echtem Text
+   verwechselt werden können. */
+.legal-todo {
+  display: inline-block;
+  color: #ff8a80;
+  font-weight: 700;
+  background: rgba(255, 82, 82, 0.1);
+  border: 1px dashed rgba(255, 82, 82, 0.5);
+  padding: 1px 7px;
+  border-radius: 4px;
+}
+
+.legal-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 24px;
+  color: var(--color-gold);
+  font-family: var(--font-display);
+  font-size: 14px;
+  text-decoration: none;
+}
