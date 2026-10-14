@@ -158,11 +158,11 @@
       "image": "assets/img/category-limonade.webp",
       "items": [
         {
-          "id": "blue-summer",
-          "name": "Blue Summer",
+          "id": "lemon-fresh",
+          "name": "Lemon Fresh",
           "price": "5,50 €",
-          "image": "assets/img/blue-summer.webp",
-          "description": "Limette, brauner Zucker, Minze, Blue-Curaçao-Sirup, Kokossirup, Red Bull Kokos-Blaubeere"
+          "image": "assets/img/category-limonade.webp",
+          "description": "Zitronen-Eistee, Zitronensaft, Zuckersirup, Ginger Ale"
         },
         {
           "id": "red-ginger",
@@ -358,6 +358,13 @@
           "price": "6,90 €",
           "image": "assets/img/caipirinha-bull.webp",
           "description": "Limette, Zuckersirup, Energy Drink"
+        },
+        {
+          "id": "blue-summer",
+          "name": "Blue Summer",
+          "price": "6,90 €",
+          "image": "assets/img/blue-summer.webp",
+          "description": "Limette, brauner Zucker, Minze, Blue-Curaçao-Sirup, Kokossirup, Red Bull Kokos-Blaubeere"
         }
       ]
     },
