@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Motion Hookah Club – Speisekarte</title>
+<meta name="description" content="Digitale Speisekarte von Motion Hookah Club – Getränke, Cocktails, Snacks & Shisha.">
+<meta name="theme-color" content="#0B0B0D">
+<link rel="canonical" href="https://motion-speisekarte.de/">
+<link rel="icon" href="assets/img/logo.png?v=1">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Motion Hookah Club">
+<meta property="og:title" content="Motion Hookah Club – Speisekarte">
+<meta property="og:description" content="Digitale Speisekarte von Motion Hookah Club – Getränke, Cocktails, Snacks & Shisha.">
+<meta property="og:url" content="https://motion-speisekarte.de/">
+<meta property="og:image" content="https://motion-speisekarte.de/assets/img/category-cocktails.webp">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Schriften liegen jetzt lokal in assets/fonts/ (siehe styles.css) statt
+     von Google-Servern nachgeladen zu werden — kein Drittanbieter-Kontakt
+     mehr beim Laden der Seite (Datenschutz). -->
+<link rel="stylesheet" href="assets/css/styles.css?v=7">
+</head>
+<body>
+
+<!-- Allergie-/Zusatzstoff-Hinweis -->
+<div id="allergy-notice" class="allergy-overlay" role="dialog" aria-modal="true" aria-labelledby="allergy-text" hidden>
+  <div class="allergy-box">
+    <p class="allergy-text" id="allergy-text">
+      Hinweis: Eine vollständige Liste der Allergene und Zusatzstoffe ist auf
+      Anfrage bei unserem Personal einsehbar.
+    </p>
+    <button id="allergy-ok" class="btn-gold" type="button">Verstanden</button>
+  </div>
+</div>
+
+<a href="#menu-main" class="skip-link">Zum Inhalt springen</a>
+
+<header class="site-header">
+  <div class="logo-wrap">
+    <img src="assets/img/logo.png?v=1" alt="Motion Hookah Club" class="logo" width="945" height="212">
+  </div>
+</header>
+
+<div class="search-bar-wrap">
+  <div class="search-bar">
+    <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.35-4.35m1.35-5.15a7 7 0 11-14 0 7 7 0 0114 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input type="search" id="menu-search" class="search-input" placeholder="Getränk oder Gericht suchen…" aria-label="Speisekarte durchsuchen" autocomplete="off">
+  </div>
+</div>
+
+<!-- Sichtbar nur innerhalb einer geöffneten Kategorie oder bei aktiver Suche -->
+<div class="view-topbar" id="view-topbar" hidden>
+  <div class="view-topbar-inner">
+    <button id="view-back" class="back-btn" type="button" aria-label="Zurück zur Übersicht">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 19l-7-7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <h2 id="view-topbar-title" class="view-topbar-title"></h2>
+  </div>
+</div>
+
+<main id="menu-main">
+  <div id="menu-content"><!-- Kachel-Übersicht / Kategorie / Suchergebnisse werden hier per JS gerendert --></div>
+</main>
+
+<footer class="site-footer">
+  <img src="assets/img/logo.png?v=1" alt="Motion Hookah Club" class="footer-logo" width="945" height="212">
+
+  <!-- ============================================================
+       KONTAKT-PLATZHALTER
+       Hier später Adresse / Öffnungszeiten / Telefon / Social Media
+       ergänzen. Struktur-Beispiel:
+
+       <ul class="footer-contact">
+         <li><svg class="icon">…Pin-Icon…</svg> Musterstraße 1, 34497 Korbach</li>
+         <li><svg class="icon">…Uhr-Icon…</svg> Mo–So 18:00–02:00 Uhr</li>
+         <li><svg class="icon">…Telefon-Icon…</svg> <a href="tel:+49...">+49 ...</a></li>
+       </ul>
+       <div class="footer-social">
+         <a href="https://instagram.com/..." aria-label="Instagram">…Icon…</a>
+         <a href="https://tiktok.com/@..." aria-label="TikTok">…Icon…</a>
+       </div>
+  ============================================================= -->
+
+  <p class="footer-copy">&copy; <span id="footer-year"></span> Motion Hookah Club ·
+    <a href="impressum.html" style="color: var(--color-text-muted);">Impressum</a> ·
+    <a href="datenschutz.html" style="color: var(--color-text-muted);">Datenschutz</a>
+  </p>
+</footer>
+
+<button id="back-to-top" class="back-to-top" type="button" aria-label="Nach oben">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="assets/js/script.js?v=5"></script>
+</body>
+</html>

@@ -1,0 +1,751 @@
+{
+  "_hinweis_assetVersion": "Nach JEDEM Austausch eines Fotos in assets/img/ diese Zahl um 1 erhöhen! Sonst zeigen Hostinger-CDN und manche Gäste-Browser bis zu ein Jahr lang das alte Bild weiter an (siehe README.md).",
+  "assetVersion": "8",
+  "categories": [
+    {
+      "id": "hot-drinks",
+      "name": "Heiße Getränke",
+      "image": "assets/img/category-hot-drinks.webp",
+      "items": [
+        {
+          "id": "espresso",
+          "name": "Espresso",
+          "price": "2,50 €",
+          "image": "assets/img/espresso.webp",
+          "tags": [
+            "Koffeinhaltig"
+          ]
+        },
+        {
+          "id": "doppel-espresso",
+          "name": "Doppelter Espresso",
+          "price": "3,50 €",
+          "image": "assets/img/doppel-espresso.webp",
+          "tags": [
+            "Koffeinhaltig"
+          ]
+        },
+        {
+          "id": "tee",
+          "name": "Tee (verschiedene Sorten)",
+          "price": "3,00 €",
+          "image": "assets/img/tee.webp",
+          "tags": [
+            "Koffeinhaltig"
+          ]
+        },
+        {
+          "id": "minztee",
+          "name": "Frischer Minztee",
+          "price": "3,50 €",
+          "image": "assets/img/minztee.webp"
+        },
+        {
+          "id": "chai",
+          "name": "Chai Latte",
+          "price": "3,50 €",
+          "image": "assets/img/chai.webp",
+          "tags": [
+            "Koffeinhaltig"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "soft-drinks",
+      "name": "Softgetränke",
+      "image": "assets/img/category-soft-drinks.webp",
+      "items": [
+        {
+          "id": "wasser",
+          "name": "Wasser (Still/Mit Kohlensäure)",
+          "price": "3,50 €",
+          "image": "assets/img/wasser.webp"
+        },
+        {
+          "id": "cola",
+          "name": "Cola / Cola Zero / Fanta / Mezzo Mix / Sprite",
+          "price": "3,50 €",
+          "image": "assets/img/cola.webp",
+          "tags": [
+            "Koffeinhaltig",
+            "Mit Farbstoff"
+          ]
+        },
+        {
+          "id": "tonic",
+          "name": "Ginger Ale / Tonic Water",
+          "price": "3,50 €",
+          "image": "assets/img/tonic.webp"
+        },
+        {
+          "id": "moloko",
+          "name": "Moloko",
+          "price": "3,90 €",
+          "image": "assets/img/moloko.webp",
+          "tags": [
+            "Koffeinhaltig"
+          ]
+        },
+        {
+          "id": "28black",
+          "name": "28 Black",
+          "price": "3,90 €",
+          "image": "assets/img/28black.webp",
+          "tags": [
+            "Koffeinhaltig"
+          ]
+        },
+        {
+          "id": "elefantbay",
+          "name": "Elefant Bay Eistee (Pfirsich/Blaubeere/Melone/Kirsche/Granatapfel/Mango/Zitrone)",
+          "price": "3,90 €",
+          "image": "assets/img/elefantbay.webp",
+          "tags": [
+            "Koffeinhaltig",
+            "Mit Farbstoff"
+          ]
+        },
+        {
+          "id": "safte",
+          "name": "Säfte (Kiba/Orange/Maracuja/Ananas/Cranberry/Kirsche)",
+          "price": "3,50 €",
+          "image": "assets/img/safte.webp"
+        },
+        {
+          "id": "churchill",
+          "name": "Churchill",
+          "price": "4,00 €",
+          "image": "assets/img/churchill.webp",
+          "description": "Wasser, Zitrone, Salz"
+        }
+      ]
+    },
+    {
+      "id": "redbull",
+      "name": "Red Bull",
+      "image": "assets/img/category-redbull.webp",
+      "items": [
+        {
+          "id": "redbull-all",
+          "name": "Red Bull",
+          "price": "3,90 €",
+          "image": "assets/img/redbull.webp",
+          "tags": [
+            "Koffeinhaltig",
+            "Taurinhaltig"
+          ],
+          "flavors": [
+            "Original",
+            "Sugarfree",
+            "Zero",
+            "Red Edition (Wassermelone)",
+            "Blue Edition (Heidelbeere)",
+            "Yellow Edition (Tropical Fruits)",
+            "Green Edition (Kaktusfeige)",
+            "Purple Edition (Açai-Beere)",
+            "Orange Edition (Mandarine)",
+            "Apricot Edition (Erdbeere-Aprikose)",
+            "White Edition (Kokosnuss-Heidelbeere)",
+            "Summer Edition (wechselnde Sorte)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "limonade",
+      "name": "Limonade",
+      "image": "assets/img/category-limonade.webp",
+      "items": [
+        {
+          "id": "blue-summer",
+          "name": "Blue Summer",
+          "price": "5,50 €",
+          "image": "assets/img/blue-summer.webp",
+          "description": "Limette, brauner Zucker, Minze, Blue-Curaçao-Sirup, Kokossirup, Red Bull Kokos-Blaubeere"
+        },
+        {
+          "id": "red-ginger",
+          "name": "Red Ginger",
+          "price": "5,50 €",
+          "image": "assets/img/red-ginger.webp",
+          "description": "Limette, brauner Zucker, Cranberrysaft, Pfirsich-Eistee, Ginger Ale, Erdbeerpüree"
+        }
+      ]
+    },
+    {
+      "id": "beer",
+      "name": "Bier",
+      "image": "assets/img/category-beer.webp",
+      "items": [
+        {
+          "id": "desperados",
+          "name": "Desperados",
+          "price": "3,90 €",
+          "image": "assets/img/desperados.webp"
+        },
+        {
+          "id": "corona",
+          "name": "Corona",
+          "price": "3,90 €",
+          "image": "assets/img/corona.webp"
+        },
+        {
+          "id": "heineken",
+          "name": "Heineken",
+          "price": "3,90 €",
+          "image": "assets/img/heineken.webp"
+        },
+        {
+          "id": "krombacher",
+          "name": "Krombacher",
+          "price": "3,90 €",
+          "image": "assets/img/krombacher.webp"
+        },
+        {
+          "id": "weizen",
+          "name": "Weizen Erdinger",
+          "price": "3,90 €",
+          "image": "assets/img/weizen.webp"
+        }
+      ]
+    },
+    {
+      "id": "cocktails",
+      "name": "Cocktails",
+      "image": "assets/img/category-cocktails.webp",
+      "items": [
+        {
+          "id": "swimmingpool",
+          "name": "Swimming Pool",
+          "price": "7,90 €",
+          "image": "assets/img/swimmingpool.webp",
+          "description": "Vodka, Blue-Curaçao-Sirup, Kokossirup, Ananassaft, Sahne"
+        },
+        {
+          "id": "pina-colada",
+          "name": "Pina Colada",
+          "price": "7,90 €",
+          "image": "assets/img/pina-colada.webp",
+          "description": "Weißer Rum, Kokossirup, Ananassaft, Sahne"
+        },
+        {
+          "id": "sex-on-the-beach",
+          "name": "Sex on the Beach",
+          "price": "7,90 €",
+          "image": "assets/img/sex-on-the-beach.webp",
+          "description": "Vodka, Pfirsichlikör, Pfirsichsirup, Orangensaft, Cranberrysaft",
+          "tags": [
+            "Mit Farbstoff"
+          ]
+        },
+        {
+          "id": "mojito",
+          "name": "Mojito (Klassisch)",
+          "price": "7,90 €",
+          "image": "assets/img/mojito.webp",
+          "description": "Weißer Rum, Limette, Minze, Zuckersirup, Soda"
+        },
+        {
+          "id": "mojito-strawberry",
+          "name": "Mojito Strawberry",
+          "price": "7,90 €",
+          "image": "assets/img/mojito-strawberry.webp",
+          "description": "Weißer Rum, Limette, Minze, Zuckersirup, Soda, Erdbeersirup",
+          "tags": [
+            "Mit Farbstoff"
+          ]
+        },
+        {
+          "id": "mojito-raspberry",
+          "name": "Mojito Raspberry",
+          "price": "7,90 €",
+          "image": "assets/img/mojito-raspberry.webp",
+          "description": "Weißer Rum, Limette, Minze, Zuckersirup, Soda, Himbeersirup",
+          "tags": [
+            "Mit Farbstoff"
+          ]
+        },
+        {
+          "id": "whisky-sour",
+          "name": "Whisky Sour",
+          "price": "7,90 €",
+          "image": "assets/img/whisky-sour.webp",
+          "description": "Whisky, Zitronensaft, Zuckersirup"
+        },
+        {
+          "id": "tequila-sunrise",
+          "name": "Tequila Sunrise",
+          "price": "7,90 €",
+          "image": "assets/img/tequila-sunrise.webp",
+          "description": "Tequila, Orangensaft, Grenadine-Sirup",
+          "tags": [
+            "Mit Farbstoff"
+          ]
+        },
+        {
+          "id": "coco-nitsche",
+          "name": "Coco Nitsche",
+          "price": "7,90 €",
+          "image": "assets/img/coco-nitsche.webp",
+          "description": "Kokossirup, Ananassaft, Sahne, weißer Red Bull"
+        },
+        {
+          "id": "arab-in-beirut",
+          "name": "Arab in Beirut",
+          "price": "7,90 €",
+          "image": "assets/img/arab-in-beirut.webp",
+          "description": "Vodka, Wassermelonen-Eistee, Grenadine"
+        },
+        {
+          "id": "pornstar-martini",
+          "name": "Pornstar Martini",
+          "price": "7,90 €",
+          "image": "assets/img/pornstar-martini.webp",
+          "description": "Vodka, Passionsfruchtsirup, Vanillesirup, Limette, Zuckersirup, Prosecco/Sekt"
+        },
+        {
+          "id": "cucumber-smash",
+          "name": "Cucumber Smash",
+          "price": "7,90 €",
+          "image": "assets/img/cucumber-smash.webp",
+          "description": "Gin, Gurke, Limette, Zuckersirup, Soda"
+        }
+      ]
+    },
+    {
+      "id": "alcohol-free-cocktails",
+      "name": "Alkoholfreie Cocktails",
+      "image": "assets/img/category-alcohol-free-cocktails.webp",
+      "items": [
+        {
+          "id": "coconut-kiss",
+          "name": "Coconut Kiss",
+          "price": "6,90 €",
+          "image": "assets/img/coconut-kiss.webp",
+          "description": "Kokossirup, Ananassaft, Orangensaft, Sahne"
+        },
+        {
+          "id": "ipanema",
+          "name": "Ipanema",
+          "price": "6,90 €",
+          "image": "assets/img/ipanema.webp",
+          "description": "Limette, Maracujasirup, Rohrzuckersirup, Ginger Ale",
+          "tags": [
+            "Mit Farbstoff"
+          ]
+        },
+        {
+          "id": "vampire-bull",
+          "name": "Vampire Bull",
+          "price": "6,90 €",
+          "image": "assets/img/vampire-bull.webp",
+          "description": "Beerensirup, Limette, Energy Drink"
+        },
+        {
+          "id": "motion-signature",
+          "name": "Motion",
+          "price": "6,90 €",
+          "image": "assets/img/motion-signature.webp",
+          "description": "Limette, Limettensaft, Minze, Moloko, Erdbeersirup",
+          "tags": [
+            "Mit Farbstoff"
+          ]
+        },
+        {
+          "id": "caipirinha-bull",
+          "name": "CaipirinhaBull",
+          "price": "6,90 €",
+          "image": "assets/img/caipirinha-bull.webp",
+          "description": "Limette, Zuckersirup, Energy Drink"
+        }
+      ]
+    },
+    {
+      "id": "longdrinks",
+      "name": "Longdrinks",
+      "image": "assets/img/category-longdrinks.webp",
+      "items": [
+        {
+          "id": "jack-coke",
+          "name": "Jack & Coke",
+          "price": "6,90 €",
+          "image": "assets/img/jack-coke.webp",
+          "description": "Jack Daniels · Cola"
+        },
+        {
+          "id": "vodka-co",
+          "name": "Vodka & Co.",
+          "price": "6,90 €",
+          "image": "assets/img/vodka-co.webp",
+          "description": "Redbull · 28 Black · Moloko · Orange · Cranberry · Mehr"
+        },
+        {
+          "id": "gin-co",
+          "name": "Gin & Co.",
+          "price": "6,90 €",
+          "image": "assets/img/gin-co.webp",
+          "description": "Gin · Tonicwater · Grapefruit · Mehr"
+        },
+        {
+          "id": "jagermeister-co",
+          "name": "Jägermeister & Co.",
+          "price": "6,90 €",
+          "image": "assets/img/jagermeister-co.webp",
+          "description": "Redbull · Fanta · Mehr"
+        },
+        {
+          "id": "bacardi-co",
+          "name": "Bacardi & Co.",
+          "price": "6,90 €",
+          "image": "assets/img/bacardi-co.webp",
+          "description": "Verschiedene"
+        },
+        {
+          "id": "skinny-bitch",
+          "name": "Skinny Bit*h",
+          "price": "6,90 €",
+          "image": "assets/img/skinny-bitch.webp"
+        }
+      ]
+    },
+    {
+      "id": "wine-prosecco",
+      "name": "Wein & Prosecco Drinks",
+      "image": "assets/img/category-wine-prosecco.webp",
+      "items": [
+        {
+          "id": "riesling",
+          "name": "Weißwein Riesling (Trocken/Lieblich)",
+          "price": "5,90 €",
+          "image": "assets/img/riesling.webp"
+        },
+        {
+          "id": "redwine",
+          "name": "Rotwein (Trocken/Lieblich)",
+          "price": "5,90 €",
+          "image": "assets/img/redwine.webp"
+        },
+        {
+          "id": "whitewine-schorle",
+          "name": "Weißweinschorle",
+          "price": "5,90 €",
+          "image": "assets/img/whitewine-schorle.webp"
+        },
+        {
+          "id": "aperol",
+          "name": "Aperol Spritz",
+          "price": "5,90 €",
+          "image": "assets/img/aperol.webp",
+          "description": "Aperol · sparkling wine · orange"
+        },
+        {
+          "id": "lillet",
+          "name": "Lillet Wild Berry",
+          "price": "5,90 €",
+          "image": "assets/img/lillet.webp",
+          "description": "Lillet · Schweppes Wild Berry · raspberries"
+        },
+        {
+          "id": "sekt",
+          "name": "Sekt",
+          "price": "4,90 €",
+          "image": "assets/img/sekt.webp"
+        }
+      ]
+    },
+    {
+      "id": "spirits",
+      "name": "Spirituosen Pur",
+      "image": "assets/img/category-spirits.webp",
+      "items": [
+        {
+          "id": "vodka-absolut",
+          "name": "Vodka Absolut",
+          "price": "4,90 €",
+          "image": "assets/img/vodka-absolut.webp",
+          "tags": [
+            "4cl"
+          ]
+        },
+        {
+          "id": "whisky-jack",
+          "name": "Whisky Jack Daniels",
+          "price": "4,90 €",
+          "image": "assets/img/whisky-jack.webp",
+          "tags": [
+            "4cl"
+          ]
+        },
+        {
+          "id": "gin-bombay",
+          "name": "Gin Bombay",
+          "price": "4,90 €",
+          "image": "assets/img/gin-bombay.webp",
+          "tags": [
+            "4cl"
+          ]
+        },
+        {
+          "id": "vodka-belvedere",
+          "name": "Vodka Belvedere (Premium)",
+          "price": "5,50 €",
+          "image": "assets/img/vodka-belvedere.webp",
+          "tags": [
+            "4cl"
+          ]
+        },
+        {
+          "id": "whisky-chivas",
+          "name": "Whisky Chivas",
+          "price": "5,50 €",
+          "image": "assets/img/whisky-chivas.webp",
+          "tags": [
+            "4cl"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shots",
+      "name": "Shots",
+      "image": "assets/img/category-shots.webp",
+      "items": [
+        {
+          "id": "jagermeister-shot",
+          "name": "Jägermeister",
+          "price": "3,00 €",
+          "image": "assets/img/jagermeister-shot.webp",
+          "tags": [
+            "2cl"
+          ]
+        },
+        {
+          "id": "sourz",
+          "name": "Sourz (verschiedene Sorten)",
+          "price": "3,00 €",
+          "image": "assets/img/sourz.webp",
+          "tags": [
+            "2cl"
+          ]
+        },
+        {
+          "id": "tequila-shot",
+          "name": "Tequila",
+          "price": "3,00 €",
+          "image": "assets/img/tequila-shot.webp",
+          "tags": [
+            "2cl"
+          ]
+        },
+        {
+          "id": "absolut-shot",
+          "name": "Absolut Vodka",
+          "price": "3,00 €",
+          "image": "assets/img/absolut-shot.webp",
+          "tags": [
+            "2cl"
+          ]
+        },
+        {
+          "id": "malibu",
+          "name": "Malibu",
+          "price": "3,00 €",
+          "image": "assets/img/malibu.webp",
+          "tags": [
+            "2cl"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bottles",
+      "name": "Flaschen",
+      "image": "assets/img/category-bottles.webp",
+      "items": [
+        {
+          "id": "bottle-absolut",
+          "name": "Vodka Absolut",
+          "price": "89,00 €",
+          "image": "assets/img/bottle-absolut.webp",
+          "description": "Mischgetränke als 1l Flasche zusätzlich 9,90 €"
+        },
+        {
+          "id": "bottle-jack",
+          "name": "Whiskey Jack Daniels",
+          "price": "89,00 €",
+          "image": "assets/img/bottle-jack.webp",
+          "description": "Mischgetränke als 1l Flasche zusätzlich 9,90 €"
+        },
+        {
+          "id": "bottle-belvedere",
+          "name": "Vodka Belvedere",
+          "price": "119,00 €",
+          "image": "assets/img/bottle-belvedere.webp",
+          "description": "Mischgetränke als 1l Flasche zusätzlich 9,90 €"
+        },
+        {
+          "id": "bottle-bombay",
+          "name": "Gin Bombay Sapphire",
+          "price": "89,00 €",
+          "image": "assets/img/bottle-bombay.webp",
+          "description": "Mischgetränke als 1l Flasche zusätzlich 9,90 €"
+        },
+        {
+          "id": "bottle-chivas",
+          "name": "Whiskey Chivas",
+          "price": "109,00 €",
+          "image": "assets/img/bottle-chivas.webp",
+          "description": "Mischgetränke als 1l Flasche zusätzlich 9,90 €"
+        },
+        {
+          "id": "bottle-jagermeister",
+          "name": "Jägermeister",
+          "price": "89,00 €",
+          "image": "assets/img/bottle-jagermeister.webp",
+          "description": "Mischgetränke als 1l Flasche zusätzlich 9,90 €"
+        },
+        {
+          "id": "bottle-moet-ice",
+          "name": "Champagne Moët ICE Imperial",
+          "price": "139,00 €",
+          "image": "assets/img/bottle-moet-ice.webp",
+          "description": "Mischgetränke als 1l Flasche zusätzlich 9,90 €"
+        }
+      ]
+    },
+    {
+      "id": "sandwiches",
+      "name": "Sandwiches",
+      "image": "assets/img/category-sandwiches.webp",
+      "items": [
+        {
+          "id": "motion-sandwich",
+          "name": "Motion-Sandwich",
+          "price": "5,90 €",
+          "image": "assets/img/motion-sandwich.webp",
+          "description": "Mit jalapeños, Käse und chili cheese sauce"
+        },
+        {
+          "id": "tuna-sandwich",
+          "name": "Tuna Sandwich",
+          "price": "5,90 €",
+          "image": "assets/img/tuna-sandwich.webp",
+          "description": "Mit tunfisch, frischkäse, remoulade und käse"
+        },
+        {
+          "id": "sucuk-sandwich",
+          "name": "Sucuk Sandwich",
+          "price": "5,90 €",
+          "image": "assets/img/sucuk-sandwich.webp",
+          "description": "Mit sucuk, frischkäse, tomatenmark paste und käse"
+        },
+        {
+          "id": "vegetaria-sandwich",
+          "name": "Vegetaria Sandwich",
+          "price": "5,90 €",
+          "image": "assets/img/vegetaria-sandwich.webp",
+          "description": "Mit mozzarella, tomaten, frischkäse"
+        }
+      ]
+    },
+    {
+      "id": "nachos-dips",
+      "name": "Nachos & Dips",
+      "image": "assets/img/category-nachos-dips.webp",
+      "items": [
+        {
+          "id": "nachos",
+          "name": "Nachos inkl. 1 Dip",
+          "price": "3,90 €",
+          "image": "assets/img/nachos.webp"
+        },
+        {
+          "id": "nachos-cheese",
+          "name": "Nachos mit Käse überbacken",
+          "price": "4,90 €",
+          "image": "assets/img/nachos-cheese.webp"
+        },
+        {
+          "id": "dip-chillicheese",
+          "name": "Chilli Cheese Dip",
+          "price": "1,00 €",
+          "image": "assets/img/dip-chillicheese.webp"
+        },
+        {
+          "id": "dip-salsa",
+          "name": "Salsa Dip",
+          "price": "1,00 €",
+          "image": "assets/img/dip-salsa.webp"
+        },
+        {
+          "id": "dip-sourcream",
+          "name": "Sour Cream Dip",
+          "price": "1,00 €",
+          "image": "assets/img/dip-sourcream.webp"
+        },
+        {
+          "id": "dip-ketchup",
+          "name": "Ketchup Dip",
+          "price": "0,50 €",
+          "image": "assets/img/dip-ketchup.webp"
+        },
+        {
+          "id": "dip-mayo",
+          "name": "Mayonnaise Dip",
+          "price": "0,50 €",
+          "image": "assets/img/dip-mayo.webp"
+        }
+      ]
+    },
+    {
+      "id": "shisha",
+      "name": "Shisha / Hookah",
+      "image": "assets/img/category-shisha.webp",
+      "items": [
+        {
+          "id": "shisha",
+          "name": "Shisha / Hookah",
+          "price": "11,90 €",
+          "image": "assets/img/shisha.webp",
+          "description": "Alle Geschmacksrichtungen verfügbar:",
+          "flavors": [
+            "3-mal im Leben",
+            "African Queen (Mix aus 16 versch. Früchten)",
+            "Ananas",
+            "Löwenherz (Pfirsich, Drachenfrucht, Himbeere)",
+            "Okolom (Moloko Dose)",
+            "Backlava(Süßes Gebäck, Pistazie)",
+            "Birne",
+            "Black Nana (Schwarze Taube)",
+            "Blackbox (Schwarze Dose)",
+            "Blaulicht (Blaubeere)",
+            "Bling Bamm (Ananas, Kiwi, Mango)",
+            "Bruderherz (Drachenfrucht)",
+            "Butterkeks",
+            "Chicherito",
+            "Doppelapfel",
+            "Ello & Raffa (Kokosnuss, Zitrone, w. Mandeln)",
+            "Falim (Türkisches Kaugummi)",
+            "Falim Red (Türkisches Kaugummi, Erdbeere)",
+            "FFM 069 (Beerenmix, Erdbeere)",
+            "Hamburg (Beerenmix, Mentol)",
+            "Huba Cola (Cola, Vanille)",
+            "Icekaktus (Kaktusfeige)",
+            "Kiwipunch",
+            "Lemon Fresh",
+            "Love 66 (Wasser- und Honigmelone mit Maracuja)",
+            "Okorange (Limette, Ice, Orange)",
+            "Persischer Apfel (Grüner Apfel)",
+            "Pistazie",
+            "Rasporn (Himbeere)",
+            "Sommer in Beirut",
+            "Sternstaub (Grapefruit , Ice)",
+            "Traube Minze Al Waha",
+            "Wassermelone"
+          ]
+        }
+      ]
+    }
+  ]
+}
